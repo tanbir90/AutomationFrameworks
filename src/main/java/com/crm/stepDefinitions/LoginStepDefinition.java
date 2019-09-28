@@ -1,31 +1,32 @@
 package com.crm.stepDefinitions;
 
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
+import com.crm.base.TestBase;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class LoginStepDefinition{
+public class LoginStepDefinition extends TestBase{
 
 	 WebDriver driver;
-
+	 Logger logger = LogManager.getLogger(LoginStepDefinition.class);
 	
 	 @Given("^user is already on Login Page$")
 	 public void user_already_on_login_page(){
 	 System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "/src/main/resources/chromedriver.exe");  //C:\Users\tanbir90\drivers
-	 //System.getProperty("user.dir")+ "/src/main/resources/chromedriver.exe"
-	 ///Users/tanbir90/drivers/chromedriver.exe
-	 driver = new ChromeDriver();
-	 driver.get("https://www.freecrm.com/index.html");
+	 TestBase.initialization();
 	 }
-	
+	 
 	
 	 @When("^title of login page is Free CRM$")
 	 public void title_of_login_page_is_free_CRM(){
